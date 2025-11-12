@@ -1,0 +1,42 @@
+version: '3.8'
+services:
+  nginx_good:
+    image: nginx:stable
+    container_name: nginx_good
+    ports:
+      - "8443:8443"
+    volumes:
+      - ./nginx_good/conf.d/default.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./nginx_good/certs:/etc/nginx/certs:ro
+    networks:
+      - demo_net
+
+  nginx_bad:
+    image: nginx:stable
+    container_name: nginx_bad
+    ports:
+      - "9443:9443"
+    volumes:
+      - ./nginx_bad/conf.d/default.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./nginx_bad/certs:/etc/nginx/certs:ro
+    networks:
+      - demo_net
+
+  scanner:
+    build:
+      context: ./scanner
+      dockerfile: Dockerfile
+    container_name: tls_scanner
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./scanner:/app
+    networks:
+      - demo_net
+    depends_on:
+      - nginx_good
+      - nginx_bad
+
+networks:
+  demo_net:
+    driver: bridge
