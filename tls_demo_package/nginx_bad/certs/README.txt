@@ -1,1 +1,0 @@
-Place TLS cert & key files here as bad.crt and bad.key (self-signed acceptable for demo).
