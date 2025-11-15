@@ -1,11 +1,9 @@
 # Demo Package – Hệ Thống Quét Sai Sót Mã Hóa
 
-Gói demo này mô phỏng một môi trường nhỏ gồm hai máy chủ Nginx (một cấu hình tốt và một cấu hình chưa an toàn) cùng một công cụ quét viết bằng Python. Mục tiêu là giúp bạn quan sát sự khác biệt cấu hình, cách quét TLS/HTTP headers, và xem báo cáo SSLyze ngay trong giao diện web.
+Gói demo này mô phỏng một môi trường nhỏ cùng một công cụ quét viết bằng Python. Mục tiêu là giúp bạn quan sát sự khác biệt cấu hình, cách quét TLS/HTTP headers, và xem báo cáo SSLyze ngay trong giao diện web.
 
 ## Tổng Quan Hoạt Động
 
-- `nginx_good`: máy chủ HTTPS với cấu hình bảo mật hợp lý.
-- `nginx_bad`: máy chủ HTTPS với cấu hình yếu để minh họa các lỗ hổng phổ biến.
 - `scanner`: dịch vụ Python (Typer + aiohttp + Jinja2) cung cấp cả CLI lẫn UI web. Scanner sẽ:
   - đọc danh sách domain/URL,
   - truy xuất thông tin HTTP headers và TLS,
@@ -19,8 +17,6 @@ Tất cả dịch vụ nằm trong cùng mạng Docker, nên khi chạy demo b�
 ```
 docker-compose.yml       # Định nghĩa stack gồm 3 container
 run_demo.sh              # Script build và khởi động nhanh (Linux/macOS)
-nginx_good/              # Cấu hình và chứng chỉ cho máy chủ "tốt"
-nginx_bad/               # Cấu hình và chứng chỉ cho máy chủ "xấu"
 scanner/                 # Mã nguồn ứng dụng quét (Python)
   ├─ scanner.py          # Điểm vào CLI/UI
   ├─ ui_template.html    # Giao diện web
@@ -31,9 +27,6 @@ scanner/                 # Mã nguồn ứng dụng quét (Python)
 ## Yêu Cầu
 
 - Docker và Docker Compose.
-- Chứng chỉ TLS tự tạo hoặc có sẵn:
-  - `nginx_good/certs/good.crt` và `good.key`
-  - `nginx_bad/certs/bad.crt` và `bad.key`
 
 ## Khởi Chạy Nhanh
 
@@ -55,8 +48,7 @@ Script sẽ build container scanner, chạy Docker Compose và hiển thị log.
 1. Mở trình duyệt tới `http://localhost:8080`.
 2. Nhập danh sách domain/URL (mỗi dòng một mục). Ví dụ:
    ```
-   https://nginx_good:8443
-   https://nginx_bad:9443
+   (https://classroom.google.com/)
    ```
 3. Nhấn **Chạy quét**.
 4. Mở rộng từng mục trong bảng kết quả để xem:
