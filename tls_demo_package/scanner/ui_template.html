@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>Bảng điều khiển TLS Scanner</title>
+  <style>
+    :root { color-scheme: light; }
+    * { box-sizing: border-box; }
+    body { font-family: "Segoe UI", Arial, sans-serif; margin: 0; background: #edf1f7; color: #1f2933; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 32px 24px 48px; }
+    h1 { margin: 0 0 24px 0; font-size: 28px; }
+    .layout { display: flex; gap: 24px; align-items: flex-start; }
+    .card { background: #ffffff; border: 1px solid #d9e2ec; border-radius: 10px; padding: 20px; box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08); }
+    .form-panel { width: 360px; flex-shrink: 0; }
+    .results-panel { flex: 1 1 auto; min-height: 420px; display: flex; flex-direction: column; gap: 16px; }
+    .message { background: #e3f2fd; border: 1px solid #90caf9; color: #0b5394; border-radius: 8px; padding: 12px 16px; margin-bottom: 16px; }
+    form { display: flex; flex-direction: column; gap: 12px; }
+    label { display: flex; align-items: center; justify-content: space-between; font-weight: 600; }
+    label span.helper { font-size: 13px; font-weight: 400; color: #52606d; }
+    textarea { width: 100%; min-height: 180px; padding: 12px; font-family: "Fira Code", Consolas, monospace; border: 1px solid #cbd2d9; border-radius: 8px; resize: vertical; }
+    input[type="file"] { width: 100%; padding: 8px; border: 1px solid #cbd2d9; border-radius: 8px; font-size: 14px; }
+    button { display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; border: none; background: linear-gradient(135deg, #2563eb, #1d4ed8); color: #ffffff; border-radius: 8px; font-size: 15px; font-weight: 600; cursor: pointer; transition: transform 0.1s ease, box-shadow 0.1s ease; }
+    button:hover { transform: translateY(-1px); box-shadow: 0 10px 18px rgba(37, 99, 235, 0.25); }
+    button:active { transform: translateY(0); box-shadow: none; }
+    .actions { margin-top: 8px; display: flex; justify-content: flex-end; }
+  .hint { font-size: 13px; color: #52606d; }
+  .form-separator { margin: 24px 0; border-top: 1px dashed #d9e2ec; }
+  .toggle { display: flex; align-items: center; gap: 10px; font-size: 14px; color: #1f2937; }
+  .toggle input { width: 18px; height: 18px; }
+    .results-header { display: flex; align-items: center; justify-content: space-between; }
+    .results-header h2 { margin: 0; font-size: 18px; }
+    .result-list { display: flex; flex-direction: column; gap: 12px; }
+    details.result-item { border: 1px solid #d9e2ec; border-radius: 10px; background: #ffffff; box-shadow: 0 6px 16px rgba(15, 23, 42, 0.05); }
+    details.result-item[open] { border-color: #2563eb; }
+    .result-summary { display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; cursor: pointer; }
+    .result-summary h3 { margin: 0; font-size: 16px; word-break: break-word; }
+    .summary-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .pill { display: inline-flex; align-items: center; padding: 4px 10px; border-radius: 999px; font-size: 12px; font-weight: 600; background: #e3ecff; color: #1e3a8a; }
+    .pill.warn { background: #fff4e6; color: #92400e; }
+    .pill.danger { background: #fee4e2; color: #b42318; }
+    .pill.success { background: #e6f4ea; color: #0f5132; }
+    .pill.low { background: #e8f5ff; color: #075985; }
+    .result-body { padding: 0 18px 18px 18px; border-top: 1px solid #e4ebf3; display: grid; gap: 14px; }
+    .section { margin-top: 14px; }
+    .section h3 { margin: 0 0 8px 0; font-size: 15px; text-transform: uppercase; letter-spacing: 0.05em; color: #3e4c59; }
+    .header-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .header-table th, .header-table td { border-bottom: 1px solid #e4ebf3; padding: 6px 8px; vertical-align: top; word-break: break-word; }
+    .header-table th { width: 30%; font-weight: 600; color: #394b59; }
+    .header-table tr:last-child th, .header-table tr:last-child td { border-bottom: none; }
+    .finding-list { display: grid; gap: 8px; }
+    .finding-item { border: 1px solid #e4ebf3; border-left-width: 4px; border-radius: 6px; padding: 8px 10px; background: #f8fafc; font-size: 14px; }
+    .finding-item.high { border-left-color: #b42318; background: #fef2f2; color: #7f1d1d; }
+    .finding-item.medium { border-left-color: #ac5a00; background: #fff7ed; color: #7c2d12; }
+    .finding-item.low { border-left-color: #475569; }
+    .finding-item.info { border-left-color: #2563eb; }
+    .tls-grid { display: grid; gap: 8px; font-size: 14px; }
+    .tls-row { display: flex; gap: 10px; flex-wrap: wrap; }
+    .tls-label { min-width: 110px; font-weight: 600; color: #3e4c59; }
+    .tls-value { flex: 1 1 auto; word-break: break-word; color: #1f2933; }
+    .code-block { background: #0f172a; color: #e2e8f0; font-family: "Fira Code", Consolas, monospace; border-radius: 8px; padding: 12px; max-height: 240px; overflow: auto; font-size: 13px; line-height: 1.45; white-space: pre-wrap; }
+    .empty { color: #52606d; font-size: 14px; }
+    .suggestions { margin-top: 10px; display: grid; gap: 6px; }
+    .suggestion-item { border-left: 3px solid #2563eb; background: #f1f5ff; padding: 6px 10px; border-radius: 4px; font-size: 14px; }
+    .placeholder { color: #667085; font-size: 14px; text-align: center; padding: 60px 0; }
+    @media (max-width: 980px) {
+      .layout { flex-direction: column; }
+      .form-panel { width: 100%; }
+    }
+    @media (max-width: 720px) {
+      .container { padding: 24px 16px 40px; }
+      button { width: 100%; justify-content: center; }
+      .actions { justify-content: stretch; }
+      .header-table th { width: 40%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>TLS Scanner</h1>
+    {% if message %}
+      <div class="message">{{ message }}</div>
+    {% endif %}
+    <div class="layout">
+      <section class="form-panel card">
+        <form method="post" action="/scan">
+          <label for="targets">
+            Danh sách domain hoặc URL
+            <span class="helper">Ví dụ: https://example.com:443</span>
+          </label>
+          <textarea id="targets" name="targets" placeholder="https://example.com:443">{{ targets_text }}</textarea>
+          <p class="hint">Nhập danh sách domain hoặc URL để quét cấu hình TLS và HTTP headers.</p>
+
+          <div class="actions">
+            <button type="submit">Quét cấu hình</button>
+          </div>
+        </form>
+      </section>
+      <section class="results-panel card">
+        <div class="results-header">
+          <h2>Kết quả quét</h2>
+          {% if results %}
+            <span class="hint">Chọn domain để xem chi tiết</span>
+          {% endif %}
+        </div>
+        {% if results %}
+          <div class="result-list">
+          {% for item in results %}
+            <details class="result-item" {% if loop.first %}open{% endif %}>
+              <summary class="result-summary">
+                <h3>{{ item.url }}</h3>
+                <div class="summary-meta">
+                  {% if item.error %}
+                    <span class="pill danger">Lỗi</span>
+                  {% else %}
+                    <span class="pill">HTTP {{ item.status }}</span>
+                    <span class="pill {{ 'danger' if item.risk == 'HIGH' else ('warn' if item.risk == 'MEDIUM' else ('low' if item.risk == 'LOW' else 'success')) }}">Rủi ro: {{ item.risk }}</span>
+                  {% endif %}
+                </div>
+              </summary>
+              <div class="result-body">
+                {% if item.error %}
+                  <p class="empty">{{ item.error }}</p>
+                {% else %}
+                  <div class="section">
+                    <h3>Thông tin TLS</h3>
+                    {% if item.tls.error %}
+                      <p class="empty">Không thể lấy thông tin TLS: {{ item.tls.error }}</p>
+                    {% else %}
+                      <div class="tls-grid">
+                        <div class="tls-row">
+                          <span class="tls-label">Phiên bản</span>
+                          <span class="tls-value">{{ item.tls.protocol }}</span>
+                        </div>
+                        <div class="tls-row">
+                          <span class="tls-label">Cipher Suite</span>
+                          <span class="tls-value">{{ item.tls.cipher.name }} ({{ item.tls.cipher.bits }} bit, {{ item.tls.cipher.protocol }})</span>
+                        </div>
+                        {% if item.tls.certificate.subject %}
+                          <div class="tls-row">
+                            <span class="tls-label">Chủ thể</span>
+                            <span class="tls-value">{{ item.tls.certificate.subject }}</span>
+                          </div>
+                        {% endif %}
+                        {% if item.tls.certificate.issuer %}
+                          <div class="tls-row">
+                            <span class="tls-label">Tổ chức phát hành</span>
+                            <span class="tls-value">{{ item.tls.certificate.issuer }}</span>
+                          </div>
+                        {% endif %}
+                        {% if item.tls.certificate.not_before or item.tls.certificate.not_after %}
+                          <div class="tls-row">
+                            <span class="tls-label">Hiệu lực</span>
+                            <span class="tls-value">
+                              {% if item.tls.certificate.not_before %}Từ {{ item.tls.certificate.not_before }}{% endif %}
+                              {% if item.tls.certificate.not_after %}<br/>Đến {{ item.tls.certificate.not_after }}{% endif %}
+                            </span>
+                          </div>
+                        {% endif %}
+                        {% if item.tls.certificate.serial_number %}
+                          <div class="tls-row">
+                            <span class="tls-label">Serial</span>
+                            <span class="tls-value">{{ item.tls.certificate.serial_number }}</span>
+                          </div>
+                        {% endif %}
+                        {% if item.tls.certificate.subject_alt_names %}
+                          <div class="tls-row">
+                            <span class="tls-label">SANs</span>
+                            <span class="tls-value">{{ item.tls.certificate.subject_alt_names }}</span>
+                          </div>
+                        {% endif %}
+                      </div>
+                    {% endif %}
+                  </div>
+                  <div class="section">
+                    <h3>HTTP Headers</h3>
+                    {% if item.headers %}
+                      <table class="header-table">
+                        <tbody>
+                        {% for key, value in item.headers.items() %}
+                          <tr>
+                            <th>{{ key }}</th>
+                            <td>{{ value }}</td>
+                          </tr>
+                        {% endfor %}
+                        </tbody>
+                      </table>
+                    {% else %}
+                      <p class="empty">Không nhận được header phản hồi.</p>
+                    {% endif %}
+                  </div>
+                  <div class="section">
+                    <h3>Phát hiện cấu hình</h3>
+                    {% if item.findings %}
+                      <div class="finding-list">
+                        {% for finding in item.findings %}
+                          <div class="finding-item {{ finding.severity|lower }}"><strong>{{ finding.severity }}</strong> &mdash; {{ finding.rule }}: {{ finding.detail }}</div>
+                        {% endfor %}
+                      </div>
+                    {% else %}
+                      <p class="empty">Không ghi nhận vấn đề.</p>
+                    {% endif %}
+                  </div>
+                  <div class="section">
+                    <h3>Gợi ý cải thiện</h3>
+                    {% if item.suggestions %}
+                      <div class="suggestions">
+                        {% for suggestion in item.suggestions %}
+                          <div class="suggestion-item">{{ suggestion }}</div>
+                        {% endfor %}
+                      </div>
+                    {% else %}
+                      <p class="empty">Cấu hình hiện tại chưa phát hiện điểm cần cải thiện.</p>
+                    {% endif %}
+                  </div>
+                  <div class="section">
+                    <h3>SSLyze</h3>
+                    {% if item.sslyze.error %}
+                      <p class="empty">Không thể chạy SSLyze: {{ item.sslyze.error }}</p>
+                    {% elif item.sslyze.output %}
+                      <div class="code-block">{{ item.sslyze.output[:2000] }}</div>
+                    {% else %}
+                      <p class="empty">Không thu thập được kết quả từ SSLyze.</p>
+                    {% endif %}
+                  </div>
+                {% endif %}
+              </div>
+            </details>
+          {% endfor %}
+          </div>
+        {% else %}
+          <div class="placeholder">Chưa có dữ liệu. Nhập domain ở cột bên trái và bấm "Quét cấu hình".</div>
+        {% endif %}
+      </section>
+    </div>
+  </div>
+</body>
+</html>

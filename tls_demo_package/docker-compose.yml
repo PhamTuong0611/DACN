@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  scanner:
+    build:
+      context: ./scanner
+      dockerfile: Dockerfile
+    container_name: tls_scanner
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./scanner:/app
+    networks:
+      - demo_net
+
+networks:
+  demo_net:
+    driver: bridge
