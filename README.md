@@ -1,21 +1,19 @@
 # Demo Package – Hệ Thống Quét Sai Sót Mã Hóa
 
-Gói demo này mô phỏng một môi trường nhỏ cùng một công cụ quét viết bằng Python. Mục tiêu là giúp bạn quan sát sự khác biệt cấu hình, cách quét TLS/HTTP headers, và xem báo cáo SSLyze ngay trong giao diện web.
+Gói demo này cung cấp một công cụ quét viết bằng Python để kiểm tra cấu hình TLS/HTTP headers của các máy chủ. Công cụ hoạt động cả ở chế độ CLI lẫn UI web.
 
 ## Tổng Quan Hoạt Động
 
 - `scanner`: dịch vụ Python (Typer + aiohttp + Jinja2) cung cấp cả CLI lẫn UI web. Scanner sẽ:
   - đọc danh sách domain/URL,
   - truy xuất thông tin HTTP headers và TLS,
-  - chạy SSLyze trên từng mục tiêu,
+  - phân tích các vấn đề bảo mật,
   - tổng hợp kết quả thành bảng và báo cáo.
-
-Tất cả dịch vụ nằm trong cùng mạng Docker, nên khi chạy demo bạn có thể nhập trực tiếp `https://nginx_good:8443` hoặc `https://nginx_bad:9443` trong UI.
 
 ## Cấu Trúc Thư Mục
 
 ```
-docker-compose.yml       # Định nghĩa stack gồm 3 container
+docker-compose.yml       # Định nghĩa stack Docker
 run_demo.sh              # Script build và khởi động nhanh (Linux/macOS)
 scanner/                 # Mã nguồn ứng dụng quét (Python)
   ├─ scanner.py          # Điểm vào CLI/UI
@@ -27,6 +25,7 @@ scanner/                 # Mã nguồn ứng dụng quét (Python)
 ## Yêu Cầu
 
 - Docker và Docker Compose.
+- Kết nối Internet để tải image nginx và các thư viện Python.
 
 ## Khởi Chạy Nhanh
 
@@ -35,7 +34,7 @@ chmod +x run_demo.sh
 ./run_demo.sh
 ```
 
-Script sẽ build container scanner, chạy Docker Compose và hiển thị log. Lần đầu chạy có thể mất vài phút để cài thư viện (bao gồm SSLyze 5.x).
+Script sẽ build container scanner và chạy Docker Compose với log hiển thị. Lần đầu chạy có thể mất vài phút để cài các thư viện Python.
 
 ## Tự Thực Hiện Thủ Công
 
@@ -48,28 +47,27 @@ Script sẽ build container scanner, chạy Docker Compose và hiển thị log.
 1. Mở trình duyệt tới `http://localhost:8080`.
 2. Nhập danh sách domain/URL (mỗi dòng một mục). Ví dụ:
    ```
-   (https://classroom.google.com/)
+   https://example.com:443
+   https://another-domain.com
    ```
-3. Nhấn **Chạy quét**.
+3. Nhấn **Quét cấu hình**.
 4. Mở rộng từng mục trong bảng kết quả để xem:
    - Thông tin TLS (protocol, cipher, chứng chỉ)
    - Các phát hiện từ header
    - Gợi ý cải thiện
-   - Kết quả SSLyze (luôn được chạy cho mỗi mục tiêu)
 
 ## Chạy Bằng CLI
 
 Bạn có thể sử dụng container scanner để chạy CLI thay vì UI:
 
 ```bash
-docker compose exec scanner python scanner.py scan --target https://nginx_good:8443
+docker compose exec scanner python scanner.py scan --target https://example.com:443
 ```
 
 Tùy chọn `--target` có thể lặp lại nhiều lần. Kết quả sẽ in ra terminal.
 
 ## Ghi Chú & Sự Cố Thường Gặp
 
-- Nếu SSLyze thiếu hoặc không chạy được, vùng kết quả sẽ hiển thị lỗi cụ thể (ví dụ không tìm thấy binary, hết thời gian, v.v.).
 - Khi truy cập từ máy ngoài Docker, đảm bảo host name khớp với chứng chỉ hoặc dùng trình duyệt bỏ qua cảnh báo.
 - Sau khi chỉnh sửa mã nguồn trong `scanner/`, Docker Compose với volume mount sẽ tự cập nhật khi bạn refresh UI.
 
