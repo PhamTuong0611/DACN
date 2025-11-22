@@ -1,7 +1,0 @@
-{% if item.sslyze.error %}
-  <p class="empty">Không thể chạy SSLyze: {{ item.sslyze.error }}</p>
-{% elif item.sslyze.output %}
-  <div class="code-block">{{ item.sslyze.output[:2000] }}</div>
-{% else %}
-  <p class="empty">Không nhận được dữ liệu từ SSLyze.</p>
-{% endif %}
