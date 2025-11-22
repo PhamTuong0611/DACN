@@ -1,0 +1,471 @@
+{
+  "timestamp": "2025-11-22T07:07:22.175218",
+  "total_targets": 4,
+  "results": [
+    {
+      "url": "https://www.youtube.com/",
+      "status": 200,
+      "headers": {
+        "Content-Type": "text/html; charset=utf-8",
+        "X-Content-Type-Options": "nosniff",
+        "Cache-Control": "no-cache, no-store, max-age=0, must-revalidate",
+        "Pragma": "no-cache",
+        "Expires": "Mon, 01 Jan 1990 00:00:00 GMT",
+        "Date": "Sat, 22 Nov 2025 07:06:57 GMT",
+        "X-Frame-Options": "SAMEORIGIN",
+        "Strict-Transport-Security": "max-age=31536000",
+        "Cross-Origin-Opener-Policy": "same-origin-allow-popups; report-to=\"youtube_main\"",
+        "Content-Security-Policy": "require-trusted-types-for 'script'",
+        "Permissions-Policy": "ch-ua-arch=*, ch-ua-bitness=*, ch-ua-full-version=*, ch-ua-full-version-list=*, ch-ua-model=*, ch-ua-wow64=*, ch-ua-form-factors=*, ch-ua-platform=*, ch-ua-platform-version=*",
+        "Origin-Trial": "AmhMBR6zCLzDDxpW+HfpP67BqwIknWnyMOXOQGfzYswFmJe+fgaI6XZgAzcxOrzNtP7hEDsOo1jdjFnVr2IdxQ4AAAB4eyJvcmlnaW4iOiJodHRwczovL3lvdXR1YmUuY29tOjQ0MyIsImZlYXR1cmUiOiJXZWJWaWV3WFJlcXVlc3RlZFdpdGhEZXByZWNhdGlvbiIsImV4cGlyeSI6MTc1ODA2NzE5OSwiaXNTdWJkb21haW4iOnRydWV9",
+        "Report-To": "{\"group\":\"youtube_main\",\"max_age\":2592000,\"endpoints\":[{\"url\":\"https://csp.withgoogle.com/csp/report-to/youtube_main\"}]}",
+        "Accept-CH": "Sec-CH-Viewport-Width, Sec-CH-DPR, Device-Memory",
+        "Vary": "Sec-CH-Viewport-Width, Sec-CH-DPR, Device-Memory",
+        "reporting-endpoints": "default=\"/web-reports?context=eJwNzXto1XUYx3F_vr2s3-_snN_v9zyymKExp_2RZ-6IBlpKKi41N0dkqcfYdJ4T87Lj5jnHTVZgeQUtRJ1t81652C0xFGqNeQFFRQ0vJN5ZkIliF2hNW-n3jxcPHz4Pz2PfG7js2Qord0aFtdJOWIc_qrQWvlJlTb-0ytpSkLR6DiWtto6k9ejltBXNSVtfXEtby-9WW3vdef2rs-f171hgE4_b_F1v8-ctm-rfbaKvOlyZ5fCoyGHpQodjTQ4dRxxu33dIRQP8URpgXCpAoifAg-JMOuszWdSdyeh3g3zzfZDiM0G2GY__CzIqEuK1SSHSsRBOOkTD5hCRXSEyDoTIOheiM9clo9TFNi43ugz-1uXWPy6vP3VZ0efygXjsnutxu8Sj8EOP2lqPdcbUzzwm13l0NXsMbfeQqx7Rux4vPfDo7vUIvuAzY4zPmok-Nwp8ns3yKYz6SJ3PqS6fSRd93rjsM_Jnn6wenxd7fTIGC1cdYcwQoThbKBwqtAwXJEcoyBWa8oTweKFympCaI_QajQuEaVFhREywE8J2406lsL7K5E-FKRuF-CZh_k7haIOw54Dw-UHhra-FNU3CiRaBVuGskT4idH4nlP4gPDltuvPCOxeEaz-Z_9eFGiPrpjDT6HdP2NctBH4RgsbW-8LIh8KOv4SuJ8JvRt-_Ql6f8N4AhYCyyvg_U1kbVJKeUpyl1A1TBo1QBrypxN9WrEJlttHwvjJxvpKzxMyYyUZzudJqHDbWLlX6UsqUauXHGnO3Vpn-iTJ1o1KxRenaqozbocytVz42Oo22_UrRl8r2r5Qrxq-HzG6TstrIblZGtSjtxs5WpeC4UnZK2XBa8Z2MbSfXnx3kHr94ZnROuCaRSqYWx_JWxxaH41WJimQ4VrEkXFZVniwvW7S8ZGz-2PGRSGRCXv6EkpX5zwGO2N9x\"",
+        "document-policy": "include-js-call-stacks-in-crash-reports",
+        "P3P": "CP=\"This is not a P3P policy! See http://support.google.com/accounts/answer/151657?hl=vi for more info.\"",
+        "Content-Encoding": "gzip",
+        "Server": "ESF",
+        "X-XSS-Protection": "0",
+        "Set-Cookie": "GPS=1; Domain=.youtube.com; Expires=Sat, 22-Nov-2025 07:36:57 GMT; Path=/; Secure; HttpOnly",
+        "Alt-Svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+        "Transfer-Encoding": "chunked"
+      },
+      "findings": [
+        {
+          "rule": "STRICT-TRANSPORT-SECURITY_PRESENT",
+          "severity": "INFO",
+          "detail": "Strict-Transport-Security: max-age=31536000"
+        },
+        {
+          "rule": "X-CONTENT-TYPE-OPTIONS_PRESENT",
+          "severity": "INFO",
+          "detail": "X-Content-Type-Options: nosniff"
+        },
+        {
+          "rule": "X-FRAME-OPTIONS_PRESENT",
+          "severity": "INFO",
+          "detail": "X-Frame-Options: SAMEORIGIN"
+        },
+        {
+          "rule": "CONTENT-SECURITY-POLICY_PRESENT",
+          "severity": "INFO",
+          "detail": "Content-Security-Policy: require-trusted-types-for 'script'"
+        },
+        {
+          "rule": "REFERRER-POLICY_MISSING",
+          "severity": "LOW",
+          "detail": "Missing Referrer-Policy: Control referrer information leakage",
+          "recommendation": "Set to 'strict-origin-when-cross-origin' or 'no-referrer'"
+        },
+        {
+          "rule": "X-XSS-PROTECTION_PRESENT",
+          "severity": "INFO",
+          "detail": "X-XSS-Protection: 0"
+        },
+        {
+          "rule": "PERMISSIONS-POLICY_PRESENT",
+          "severity": "INFO",
+          "detail": "Permissions-Policy: ch-ua-arch=*, ch-ua-bitness=*, ch-ua-full-version=*, ch-ua-full-version-list=*, ch-ua-model=*, ch-ua-wow64=*, ch-ua-form-factors=*, ch-ua-platform=*, ch-ua-platform-version=*"
+        },
+        {
+          "rule": "COOKIE_SECURE_PRESENT",
+          "severity": "INFO",
+          "detail": "Cookie has Secure"
+        },
+        {
+          "rule": "COOKIE_HTTPONLY_PRESENT",
+          "severity": "INFO",
+          "detail": "Cookie has HttpOnly"
+        },
+        {
+          "rule": "COOKIE_SAMESITE_MISSING",
+          "severity": "MEDIUM",
+          "detail": "Cookie missing SameSite attribute",
+          "recommendation": "Add SameSite flag to Set-Cookie header"
+        }
+      ],
+      "score": 6,
+      "risk": "MEDIUM",
+      "suggestions": [
+        "✓ Add Referrer-Policy: strict-origin-when-cross-origin to limit referrer leakage",
+        "✓ Set SameSite=Lax or SameSite=Strict to mitigate CSRF attacks"
+      ],
+      "tls": {
+        "protocol": "TLSv1.3",
+        "cipher": {
+          "name": "TLS_AES_256_GCM_SHA384",
+          "protocol": "TLSv1.3",
+          "bits": 256
+        },
+        "certificate": {
+          "subject": "",
+          "issuer": "",
+          "not_before": null,
+          "not_after": null,
+          "serial_number": null,
+          "subject_alt_names": null
+        }
+      },
+      "tls_analysis": {
+        "protocol": "TLSv1.3",
+        "cipher": "TLS_AES_256_GCM_SHA384",
+        "cipher_bits": 256,
+        "findings": [],
+        "issues": [],
+        "overall_severity": "INFO",
+        "certificate_analysis": {
+          "error": "Could not retrieve certificate"
+        }
+      },
+      "sslyze": {
+        "output": "",
+        "note": "SSLyze not available"
+      }
+    },
+    {
+      "url": "https://github.com/",
+      "status": 200,
+      "headers": {
+        "Date": "Sat, 22 Nov 2025 07:06:48 GMT",
+        "Content-Type": "text/html; charset=utf-8",
+        "Vary": "X-PJAX, X-PJAX-Container, Turbo-Visit, Turbo-Frame, X-Requested-With, Accept-Language,Accept-Encoding, Accept, X-Requested-With",
+        "Content-Language": "en-US",
+        "Etag": "W/\"4973699ca14ac928d6532a13a2745715\"",
+        "Cache-Control": "max-age=0, private, must-revalidate",
+        "Strict-Transport-Security": "max-age=31536000; includeSubdomains; preload",
+        "X-Frame-Options": "deny",
+        "X-Content-Type-Options": "nosniff",
+        "X-XSS-Protection": "0",
+        "Referrer-Policy": "origin-when-cross-origin, strict-origin-when-cross-origin",
+        "Content-Security-Policy": "default-src 'none'; base-uri 'self'; child-src github.githubassets.com github.com/assets-cdn/worker/ github.com/assets/ gist.github.com/assets-cdn/worker/; connect-src 'self' uploads.github.com www.githubstatus.com collector.github.com raw.githubusercontent.com api.github.com github-cloud.s3.amazonaws.com github-production-repository-file-5c1aeb.s3.amazonaws.com github-production-upload-manifest-file-7fdce7.s3.amazonaws.com github-production-user-asset-6210df.s3.amazonaws.com *.rel.tunnels.api.visualstudio.com wss://*.rel.tunnels.api.visualstudio.com github.githubassets.com objects-origin.githubusercontent.com copilot-proxy.githubusercontent.com proxy.individual.githubcopilot.com proxy.business.githubcopilot.com proxy.enterprise.githubcopilot.com *.actions.githubusercontent.com wss://*.actions.githubusercontent.com productionresultssa0.blob.core.windows.net/ productionresultssa1.blob.core.windows.net/ productionresultssa2.blob.core.windows.net/ productionresultssa3.blob.core.windows.net/ productionresultssa4.blob.core.windows.net/ productionresultssa5.blob.core.windows.net/ productionresultssa6.blob.core.windows.net/ productionresultssa7.blob.core.windows.net/ productionresultssa8.blob.core.windows.net/ productionresultssa9.blob.core.windows.net/ productionresultssa10.blob.core.windows.net/ productionresultssa11.blob.core.windows.net/ productionresultssa12.blob.core.windows.net/ productionresultssa13.blob.core.windows.net/ productionresultssa14.blob.core.windows.net/ productionresultssa15.blob.core.windows.net/ productionresultssa16.blob.core.windows.net/ productionresultssa17.blob.core.windows.net/ productionresultssa18.blob.core.windows.net/ productionresultssa19.blob.core.windows.net/ github-production-repository-image-32fea6.s3.amazonaws.com github-production-release-asset-2e65be.s3.amazonaws.com insights.github.com wss://alive.github.com wss://alive-staging.github.com api.githubcopilot.com api.individual.githubcopilot.com api.business.githubcopilot.com api.enterprise.githubcopilot.com edge.fullstory.com rs.fullstory.com; font-src github.githubassets.com; form-action 'self' github.com gist.github.com copilot-workspace.githubnext.com objects-origin.githubusercontent.com; frame-ancestors 'none'; frame-src viewscreen.githubusercontent.com notebooks.githubusercontent.com www.youtube-nocookie.com; img-src 'self' data: blob: github.githubassets.com media.githubusercontent.com camo.githubusercontent.com identicons.github.com avatars.githubusercontent.com private-avatars.githubusercontent.com github-cloud.s3.amazonaws.com objects.githubusercontent.com release-assets.githubusercontent.com secured-user-images.githubusercontent.com/ user-images.githubusercontent.com/ private-user-images.githubusercontent.com opengraph.githubassets.com marketplace-screenshots.githubusercontent.com/ copilotprodattachments.blob.core.windows.net/github-production-copilot-attachments/ github-production-user-asset-6210df.s3.amazonaws.com customer-stories-feed.github.com spotlights-feed.github.com objects-origin.githubusercontent.com *.githubusercontent.com images.ctfassets.net/8aevphvgewt8/; manifest-src 'self'; media-src github.com user-images.githubusercontent.com/ secured-user-images.githubusercontent.com/ private-user-images.githubusercontent.com github-production-user-asset-6210df.s3.amazonaws.com gist.github.com github.githubassets.com assets.ctfassets.net/8aevphvgewt8/ videos.ctfassets.net/8aevphvgewt8/; script-src github.githubassets.com; style-src 'unsafe-inline' github.githubassets.com; upgrade-insecure-requests; worker-src github.githubassets.com github.com/assets-cdn/worker/ github.com/assets/ gist.github.com/assets-cdn/worker/",
+        "Server": "github.com",
+        "Content-Encoding": "gzip",
+        "Accept-Ranges": "bytes",
+        "Set-Cookie": "_gh_sess=X18CTUjhHhVn%2BOZCwtMG%2FZbD4f9rXZOihlkFyhYwYRYrZo5K7XVtkHiXB2xL%2F%2FdljK1Ph1NwhtB2h9o%2F1J26RorTm7kO19MXZRISlaliUqDK2BxoIUKEh%2F6WgP6uX0ILI8jo5zQCBQBxyKodczXD1MfM6VH7JDIEzR3tw2K6m5Gs%2FJ8n1jYp8V%2FoVCANGN0dxKSYjbuoSVE4SjElQ6f5eqHQQSLk2i3y9D95N%2FPaLN8sDReUFp0PkyNwHOCqwloI2YyWRswGieWKL0ycFcrtIQ%3D%3D--J3CC1NjrzAGVgl%2FS--wAl9t6yyuVRgAespAUXKkQ%3D%3D; Path=/; HttpOnly; Secure; SameSite=Lax",
+        "X-GitHub-Request-Id": "C969:6BCB:83FD82:9DD015:69216110",
+        "Transfer-Encoding": "chunked"
+      },
+      "findings": [
+        {
+          "rule": "STRICT-TRANSPORT-SECURITY_PRESENT",
+          "severity": "INFO",
+          "detail": "Strict-Transport-Security: max-age=31536000; includeSubdomains; preload"
+        },
+        {
+          "rule": "X-CONTENT-TYPE-OPTIONS_PRESENT",
+          "severity": "INFO",
+          "detail": "X-Content-Type-Options: nosniff"
+        },
+        {
+          "rule": "X-FRAME-OPTIONS_PRESENT",
+          "severity": "INFO",
+          "detail": "X-Frame-Options: deny"
+        },
+        {
+          "rule": "CONTENT-SECURITY-POLICY_PRESENT",
+          "severity": "INFO",
+          "detail": "Content-Security-Policy: default-src 'none'; base-uri 'self'; child-src github.githubassets.com github.com/assets-cdn/worker/ github.com/assets/ gist.github.com/assets-cdn/worker/; connect-src 'self' uploads.github.com www.githubstatus.com collector.github.com raw.githubusercontent.com api.github.com github-cloud.s3.amazonaws.com github-production-repository-file-5c1aeb.s3.amazonaws.com github-production-upload-manifest-file-7fdce7.s3.amazonaws.com github-production-user-asset-6210df.s3.amazonaws.com *.rel.tunnels.api.visualstudio.com wss://*.rel.tunnels.api.visualstudio.com github.githubassets.com objects-origin.githubusercontent.com copilot-proxy.githubusercontent.com proxy.individual.githubcopilot.com proxy.business.githubcopilot.com proxy.enterprise.githubcopilot.com *.actions.githubusercontent.com wss://*.actions.githubusercontent.com productionresultssa0.blob.core.windows.net/ productionresultssa1.blob.core.windows.net/ productionresultssa2.blob.core.windows.net/ productionresultssa3.blob.core.windows.net/ productionresultssa4.blob.core.windows.net/ productionresultssa5.blob.core.windows.net/ productionresultssa6.blob.core.windows.net/ productionresultssa7.blob.core.windows.net/ productionresultssa8.blob.core.windows.net/ productionresultssa9.blob.core.windows.net/ productionresultssa10.blob.core.windows.net/ productionresultssa11.blob.core.windows.net/ productionresultssa12.blob.core.windows.net/ productionresultssa13.blob.core.windows.net/ productionresultssa14.blob.core.windows.net/ productionresultssa15.blob.core.windows.net/ productionresultssa16.blob.core.windows.net/ productionresultssa17.blob.core.windows.net/ productionresultssa18.blob.core.windows.net/ productionresultssa19.blob.core.windows.net/ github-production-repository-image-32fea6.s3.amazonaws.com github-production-release-asset-2e65be.s3.amazonaws.com insights.github.com wss://alive.github.com wss://alive-staging.github.com api.githubcopilot.com api.individual.githubcopilot.com api.business.githubcopilot.com api.enterprise.githubcopilot.com edge.fullstory.com rs.fullstory.com; font-src github.githubassets.com; form-action 'self' github.com gist.github.com copilot-workspace.githubnext.com objects-origin.githubusercontent.com; frame-ancestors 'none'; frame-src viewscreen.githubusercontent.com notebooks.githubusercontent.com www.youtube-nocookie.com; img-src 'self' data: blob: github.githubassets.com media.githubusercontent.com camo.githubusercontent.com identicons.github.com avatars.githubusercontent.com private-avatars.githubusercontent.com github-cloud.s3.amazonaws.com objects.githubusercontent.com release-assets.githubusercontent.com secured-user-images.githubusercontent.com/ user-images.githubusercontent.com/ private-user-images.githubusercontent.com opengraph.githubassets.com marketplace-screenshots.githubusercontent.com/ copilotprodattachments.blob.core.windows.net/github-production-copilot-attachments/ github-production-user-asset-6210df.s3.amazonaws.com customer-stories-feed.github.com spotlights-feed.github.com objects-origin.githubusercontent.com *.githubusercontent.com images.ctfassets.net/8aevphvgewt8/; manifest-src 'self'; media-src github.com user-images.githubusercontent.com/ secured-user-images.githubusercontent.com/ private-user-images.githubusercontent.com github-production-user-asset-6210df.s3.amazonaws.com gist.github.com github.githubassets.com assets.ctfassets.net/8aevphvgewt8/ videos.ctfassets.net/8aevphvgewt8/; script-src github.githubassets.com; style-src 'unsafe-inline' github.githubassets.com; upgrade-insecure-requests; worker-src github.githubassets.com github.com/assets-cdn/worker/ github.com/assets/ gist.github.com/assets-cdn/worker/"
+        },
+        {
+          "rule": "REFERRER-POLICY_PRESENT",
+          "severity": "INFO",
+          "detail": "Referrer-Policy: origin-when-cross-origin, strict-origin-when-cross-origin"
+        },
+        {
+          "rule": "X-XSS-PROTECTION_PRESENT",
+          "severity": "INFO",
+          "detail": "X-XSS-Protection: 0"
+        },
+        {
+          "rule": "PERMISSIONS-POLICY_MISSING",
+          "severity": "LOW",
+          "detail": "Missing Permissions-Policy: Control browser features",
+          "recommendation": "Restrict unnecessary permissions"
+        },
+        {
+          "rule": "COOKIE_SECURE_PRESENT",
+          "severity": "INFO",
+          "detail": "Cookie has Secure"
+        },
+        {
+          "rule": "COOKIE_HTTPONLY_PRESENT",
+          "severity": "INFO",
+          "detail": "Cookie has HttpOnly"
+        },
+        {
+          "rule": "COOKIE_SAMESITE_VALID",
+          "severity": "INFO",
+          "detail": "Cookie has valid SameSite"
+        }
+      ],
+      "score": 1,
+      "risk": "LOW",
+      "suggestions": [],
+      "tls": {
+        "protocol": "TLSv1.3",
+        "cipher": {
+          "name": "TLS_AES_128_GCM_SHA256",
+          "protocol": "TLSv1.3",
+          "bits": 128
+        },
+        "certificate": {
+          "subject": "",
+          "issuer": "",
+          "not_before": null,
+          "not_after": null,
+          "serial_number": null,
+          "subject_alt_names": null
+        }
+      },
+      "tls_analysis": {
+        "protocol": "TLSv1.3",
+        "cipher": "TLS_AES_128_GCM_SHA256",
+        "cipher_bits": 128,
+        "findings": [],
+        "issues": [],
+        "overall_severity": "INFO",
+        "certificate_analysis": {
+          "error": "Could not retrieve certificate"
+        }
+      },
+      "sslyze": {
+        "output": "",
+        "note": "SSLyze not available"
+      }
+    },
+    {
+      "url": "https://www.facebook.com/",
+      "status": 200,
+      "headers": {
+        "Vary": "Accept-Encoding",
+        "Content-Encoding": "gzip",
+        "Set-Cookie": "fr=016MEoPUUudGxMs50..BpIWER..AAA.0.0.BpIWER.AWes2Pz5vqcWi46ggN5uvG-MGVU; expires=Fri, 20-Feb-2026 07:06:57 GMT; Max-Age=7776000; path=/; domain=.facebook.com; secure; httponly",
+        "accept-ch-lifetime": "4838400",
+        "accept-ch": "viewport-width,dpr,Sec-CH-Prefers-Color-Scheme,Sec-CH-UA-Full-Version-List,Sec-CH-UA-Platform-Version,Sec-CH-UA-Model",
+        "reporting-endpoints": "coop_report=\"https://www.facebook.com/browser_reporting/coop/?minimize=0\", default=\"https://www.facebook.com/ajax/browser_error_reports/?device_level=unknown&brsid=7575442774291323198&cpp=C3&cv=1030270962&st=1763795217040\", permissions_policy=\"https://www.facebook.com/ajax/browser_error_reports/\"",
+        "report-to": "{\"max_age\":2592000,\"endpoints\":[{\"url\":\"https:\\/\\/www.facebook.com\\/browser_reporting\\/coop\\/?minimize=0\"}],\"group\":\"coop_report\",\"include_subdomains\":true}, {\"max_age\":259200,\"endpoints\":[{\"url\":\"https:\\/\\/www.facebook.com\\/ajax\\/browser_error_reports\\/?device_level=unknown&brsid=7575442774291323198&cpp=C3&cv=1030270962&st=1763795217040\"}]}, {\"max_age\":3600,\"endpoints\":[{\"url\":\"https:\\/\\/www.facebook.com\\/ajax\\/browser_error_reports\\/?device_level=unknown&brsid=7575442774291323198&cpp=C3&cv=1030270962&st=1763795217040\"}],\"group\":\"network-errors\"}, {\"max_age\":21600,\"endpoints\":[{\"url\":\"https:\\/\\/www.facebook.com\\/ajax\\/browser_error_reports\\/\"}],\"group\":\"permissions_policy\"}",
+        "content-security-policy": "default-src blob: 'self' https://*.fbsbx.com *.facebook.com *.fbcdn.net;script-src *.facebook.com *.fbcdn.net *.facebook.net 127.0.0.1:* 'nonce-6v3cbc0I' blob: 'self' connect.facebook.net 'unsafe-eval' https://*.google-analytics.com *.google.com;style-src *.fbcdn.net data: *.facebook.com 'unsafe-inline' https://fonts.googleapis.com;connect-src *.facebook.com facebook.com *.fbcdn.net *.facebook.net wss://*.facebook.com:* wss://*.whatsapp.com:* wss://*.fbcdn.net attachment.fbsbx.com ws://localhost:* blob: *.cdninstagram.com 'self' http://localhost:3103 wss://gateway.facebook.com wss://edge-chat.facebook.com wss://snaptu-d.facebook.com wss://kaios-d.facebook.com/ v.whatsapp.net *.fbsbx.com *.fb.com https://*.google-analytics.com;font-src data: *.facebook.com *.fbcdn.net *.fbsbx.com https://fonts.gstatic.com;img-src *.fbcdn.net *.facebook.com data: https://*.fbsbx.com facebook.com *.cdninstagram.com fbsbx.com fbcdn.net connect.facebook.net *.carriersignal.info blob: android-webview-video-poster: *.whatsapp.net *.fb.com *.oculuscdn.com *.tenor.co *.tenor.com *.giphy.com https://trustly.one/ https://*.trustly.one/ https://paywithmybank.com/ https://*.paywithmybank.com/ https://www.googleadservices.com https://googleads.g.doubleclick.net https://*.google-analytics.com;media-src *.cdninstagram.com blob: *.fbcdn.net *.fbsbx.com www.facebook.com *.facebook.com data: *.tenor.co *.tenor.com https://*.giphy.com;child-src data: blob: 'self' https://*.fbsbx.com *.facebook.com *.fbcdn.net;frame-src *.facebook.com *.fbsbx.com fbsbx.com data: www.instagram.com *.fbcdn.net accounts.meta.com *.accounts.meta.com https://trustly.one/ https://*.trustly.one/ https://paywithmybank.com/ https://*.paywithmybank.com/ https://www.googleadservices.com https://googleads.g.doubleclick.net https://www.google.com https://td.doubleclick.net *.google.com *.doubleclick.net;manifest-src data: blob: 'self' https://*.fbsbx.com *.facebook.com *.fbcdn.net;object-src data: blob: 'self' https://*.fbsbx.com *.facebook.com *.fbcdn.net;worker-src blob: *.facebook.com data:;block-all-mixed-content;upgrade-insecure-requests;",
+        "nel": "{\"report_to\":\"network-errors\",\"max_age\":3600,\"failure_fraction\":0.01}",
+        "X-Frame-Options": "DENY",
+        "document-policy": "force-load-at-top",
+        "permissions-policy": "accelerometer=(), attribution-reporting=(self), autoplay=(), bluetooth=(), browsing-topics=(self), camera=(self \"https://www.fbsbx.com\"), ch-device-memory=(), ch-downlink=(), ch-dpr=(), ch-ect=(), ch-rtt=(), ch-save-data=(), ch-ua-arch=(), ch-ua-bitness=(), ch-viewport-height=(), ch-viewport-width=(), ch-width=(), clipboard-read=(self), clipboard-write=(self), compute-pressure=(), display-capture=(self), encrypted-media=(self), fullscreen=(self), gamepad=*, geolocation=(self), gyroscope=(), hid=(), idle-detection=(), interest-cohort=(self), keyboard-map=(), local-fonts=(), magnetometer=(), microphone=(self), midi=(), otp-credentials=(), payment=(), picture-in-picture=(self), private-state-token-issuance=(), publickey-credentials-get=(self), screen-wake-lock=(), serial=(), shared-storage=(), shared-storage-select-url=(), private-state-token-redemption=(), usb=(), unload=(self), window-management=(), xr-spatial-tracking=(self);report-to=\"permissions_policy\"",
+        "cross-origin-resource-policy": "same-origin",
+        "cross-origin-opener-policy": "unsafe-none",
+        "Pragma": "no-cache",
+        "Cache-Control": "private, no-cache, no-store, must-revalidate",
+        "Expires": "Sat, 01 Jan 2000 00:00:00 GMT",
+        "X-Content-Type-Options": "nosniff",
+        "X-XSS-Protection": "0",
+        "origin-agent-cluster": "?1",
+        "Strict-Transport-Security": "max-age=15552000; preload",
+        "Content-Type": "text/html; charset=\"utf-8\"",
+        "X-FB-Debug": "RyDRMaNyx5Ky5PygOLNVLJR32T/d4TEordbIuCS3rpBhTZMJ59jwAgu0o4cHc7YHdQ3etxt/XbQ5wfujnDyL4g==",
+        "Date": "Sat, 22 Nov 2025 07:06:57 GMT",
+        "X-FB-Connection-Quality": "EXCELLENT; q=0.9, rtt=38, rtx=0, c=10, mss=1392, tbw=3662, tp=-1, tpl=-1, uplat=240, ullat=0",
+        "Alt-Svc": "h3=\":443\"; ma=86400",
+        "Transfer-Encoding": "chunked",
+        "Connection": "keep-alive"
+      },
+      "findings": [
+        {
+          "rule": "STRICT-TRANSPORT-SECURITY_PRESENT",
+          "severity": "INFO",
+          "detail": "Strict-Transport-Security: max-age=15552000; preload"
+        },
+        {
+          "rule": "X-CONTENT-TYPE-OPTIONS_PRESENT",
+          "severity": "INFO",
+          "detail": "X-Content-Type-Options: nosniff"
+        },
+        {
+          "rule": "X-FRAME-OPTIONS_PRESENT",
+          "severity": "INFO",
+          "detail": "X-Frame-Options: DENY"
+        },
+        {
+          "rule": "CONTENT-SECURITY-POLICY_PRESENT",
+          "severity": "INFO",
+          "detail": "content-security-policy: default-src blob: 'self' https://*.fbsbx.com *.facebook.com *.fbcdn.net;script-src *.facebook.com *.fbcdn.net *.facebook.net 127.0.0.1:* 'nonce-6v3cbc0I' blob: 'self' connect.facebook.net 'unsafe-eval' https://*.google-analytics.com *.google.com;style-src *.fbcdn.net data: *.facebook.com 'unsafe-inline' https://fonts.googleapis.com;connect-src *.facebook.com facebook.com *.fbcdn.net *.facebook.net wss://*.facebook.com:* wss://*.whatsapp.com:* wss://*.fbcdn.net attachment.fbsbx.com ws://localhost:* blob: *.cdninstagram.com 'self' http://localhost:3103 wss://gateway.facebook.com wss://edge-chat.facebook.com wss://snaptu-d.facebook.com wss://kaios-d.facebook.com/ v.whatsapp.net *.fbsbx.com *.fb.com https://*.google-analytics.com;font-src data: *.facebook.com *.fbcdn.net *.fbsbx.com https://fonts.gstatic.com;img-src *.fbcdn.net *.facebook.com data: https://*.fbsbx.com facebook.com *.cdninstagram.com fbsbx.com fbcdn.net connect.facebook.net *.carriersignal.info blob: android-webview-video-poster: *.whatsapp.net *.fb.com *.oculuscdn.com *.tenor.co *.tenor.com *.giphy.com https://trustly.one/ https://*.trustly.one/ https://paywithmybank.com/ https://*.paywithmybank.com/ https://www.googleadservices.com https://googleads.g.doubleclick.net https://*.google-analytics.com;media-src *.cdninstagram.com blob: *.fbcdn.net *.fbsbx.com www.facebook.com *.facebook.com data: *.tenor.co *.tenor.com https://*.giphy.com;child-src data: blob: 'self' https://*.fbsbx.com *.facebook.com *.fbcdn.net;frame-src *.facebook.com *.fbsbx.com fbsbx.com data: www.instagram.com *.fbcdn.net accounts.meta.com *.accounts.meta.com https://trustly.one/ https://*.trustly.one/ https://paywithmybank.com/ https://*.paywithmybank.com/ https://www.googleadservices.com https://googleads.g.doubleclick.net https://www.google.com https://td.doubleclick.net *.google.com *.doubleclick.net;manifest-src data: blob: 'self' https://*.fbsbx.com *.facebook.com *.fbcdn.net;object-src data: blob: 'self' https://*.fbsbx.com *.facebook.com *.fbcdn.net;worker-src blob: *.facebook.com data:;block-all-mixed-content;upgrade-insecure-requests;"
+        },
+        {
+          "rule": "REFERRER-POLICY_MISSING",
+          "severity": "LOW",
+          "detail": "Missing Referrer-Policy: Control referrer information leakage",
+          "recommendation": "Set to 'strict-origin-when-cross-origin' or 'no-referrer'"
+        },
+        {
+          "rule": "X-XSS-PROTECTION_PRESENT",
+          "severity": "INFO",
+          "detail": "X-XSS-Protection: 0"
+        },
+        {
+          "rule": "PERMISSIONS-POLICY_PRESENT",
+          "severity": "INFO",
+          "detail": "permissions-policy: accelerometer=(), attribution-reporting=(self), autoplay=(), bluetooth=(), browsing-topics=(self), camera=(self \"https://www.fbsbx.com\"), ch-device-memory=(), ch-downlink=(), ch-dpr=(), ch-ect=(), ch-rtt=(), ch-save-data=(), ch-ua-arch=(), ch-ua-bitness=(), ch-viewport-height=(), ch-viewport-width=(), ch-width=(), clipboard-read=(self), clipboard-write=(self), compute-pressure=(), display-capture=(self), encrypted-media=(self), fullscreen=(self), gamepad=*, geolocation=(self), gyroscope=(), hid=(), idle-detection=(), interest-cohort=(self), keyboard-map=(), local-fonts=(), magnetometer=(), microphone=(self), midi=(), otp-credentials=(), payment=(), picture-in-picture=(self), private-state-token-issuance=(), publickey-credentials-get=(self), screen-wake-lock=(), serial=(), shared-storage=(), shared-storage-select-url=(), private-state-token-redemption=(), usb=(), unload=(self), window-management=(), xr-spatial-tracking=(self);report-to=\"permissions_policy\""
+        },
+        {
+          "rule": "COOKIE_SECURE_PRESENT",
+          "severity": "INFO",
+          "detail": "Cookie has Secure"
+        },
+        {
+          "rule": "COOKIE_HTTPONLY_PRESENT",
+          "severity": "INFO",
+          "detail": "Cookie has HttpOnly"
+        },
+        {
+          "rule": "COOKIE_SAMESITE_MISSING",
+          "severity": "MEDIUM",
+          "detail": "Cookie missing SameSite attribute",
+          "recommendation": "Add SameSite flag to Set-Cookie header"
+        }
+      ],
+      "score": 6,
+      "risk": "MEDIUM",
+      "suggestions": [
+        "✓ Add Referrer-Policy: strict-origin-when-cross-origin to limit referrer leakage",
+        "✓ Set SameSite=Lax or SameSite=Strict to mitigate CSRF attacks"
+      ],
+      "tls": {
+        "protocol": "TLSv1.3",
+        "cipher": {
+          "name": "TLS_CHACHA20_POLY1305_SHA256",
+          "protocol": "TLSv1.3",
+          "bits": 256
+        },
+        "certificate": {
+          "subject": "",
+          "issuer": "",
+          "not_before": null,
+          "not_after": null,
+          "serial_number": null,
+          "subject_alt_names": null
+        }
+      },
+      "tls_analysis": {
+        "protocol": "TLSv1.3",
+        "cipher": "TLS_CHACHA20_POLY1305_SHA256",
+        "cipher_bits": 256,
+        "findings": [],
+        "issues": [],
+        "overall_severity": "INFO",
+        "certificate_analysis": {
+          "error": "Could not retrieve certificate"
+        }
+      },
+      "sslyze": {
+        "output": "",
+        "note": "SSLyze not available"
+      }
+    },
+    {
+      "url": "https://example.com",
+      "status": 200,
+      "headers": {
+        "Accept-Ranges": "bytes",
+        "Content-Type": "text/html",
+        "Etag": "\"bc2473a18e003bdb249eba5ce893033f:1760028122.592274\"",
+        "Last-Modified": "Thu, 09 Oct 2025 16:42:02 GMT",
+        "Vary": "Accept-Encoding",
+        "Content-Encoding": "gzip",
+        "Content-Length": "363",
+        "Cache-Control": "max-age=86000",
+        "Date": "Sat, 22 Nov 2025 07:06:57 GMT",
+        "Connection": "keep-alive",
+        "Alt-Svc": "h3=\":443\"; ma=93600"
+      },
+      "findings": [
+        {
+          "rule": "STRICT-TRANSPORT-SECURITY_MISSING",
+          "severity": "HIGH",
+          "detail": "Missing Strict-Transport-Security: Enforce HTTPS - prevents MITM attacks",
+          "recommendation": "Set-Header max-age=31536000; includeSubDomains; preload"
+        },
+        {
+          "rule": "X-CONTENT-TYPE-OPTIONS_MISSING",
+          "severity": "MEDIUM",
+          "detail": "Missing X-Content-Type-Options: Prevent MIME type sniffing",
+          "recommendation": "Set header to 'nosniff'"
+        },
+        {
+          "rule": "X-FRAME-OPTIONS_MISSING",
+          "severity": "MEDIUM",
+          "detail": "Missing X-Frame-Options: Prevent clickjacking",
+          "recommendation": "Set to 'DENY' or 'SAMEORIGIN'"
+        },
+        {
+          "rule": "CONTENT-SECURITY-POLICY_MISSING",
+          "severity": "MEDIUM",
+          "detail": "Missing Content-Security-Policy: Mitigate XSS and injection attacks",
+          "recommendation": "Define strict CSP policy"
+        },
+        {
+          "rule": "REFERRER-POLICY_MISSING",
+          "severity": "LOW",
+          "detail": "Missing Referrer-Policy: Control referrer information leakage",
+          "recommendation": "Set to 'strict-origin-when-cross-origin' or 'no-referrer'"
+        },
+        {
+          "rule": "X-XSS-PROTECTION_MISSING",
+          "severity": "LOW",
+          "detail": "Missing X-XSS-Protection: Legacy XSS protection (deprecated but helpful for older browsers)",
+          "recommendation": "Set to '1; mode=block' for older browsers"
+        },
+        {
+          "rule": "PERMISSIONS-POLICY_MISSING",
+          "severity": "LOW",
+          "detail": "Missing Permissions-Policy: Control browser features",
+          "recommendation": "Restrict unnecessary permissions"
+        },
+        {
+          "rule": "NO_SET_COOKIE",
+          "severity": "INFO",
+          "detail": "No Set-Cookie header returned."
+        }
+      ],
+      "score": 28,
+      "risk": "HIGH",
+      "suggestions": [
+        "⚠️ CRITICAL: Enable Strict-Transport-Security (HSTS) to force HTTPS. Use: max-age=31536000; includeSubDomains; preload",
+        "✓ Add X-Content-Type-Options: nosniff to prevent MIME sniffing",
+        "✓ Add X-Frame-Options to prevent clickjacking (use DENY or SAMEORIGIN)",
+        "✓ Implement Content-Security-Policy to mitigate XSS and injection attacks",
+        "✓ Add Referrer-Policy: strict-origin-when-cross-origin to limit referrer leakage",
+        "✓ Add X-XSS-Protection: 1; mode=block (legacy but helpful for older browsers)",
+        "ℹ️ No cookies set; verify this is intentional"
+      ],
+      "tls": {
+        "protocol": "TLSv1.3",
+        "cipher": {
+          "name": "TLS_AES_256_GCM_SHA384",
+          "protocol": "TLSv1.3",
+          "bits": 256
+        },
+        "certificate": {
+          "subject": "",
+          "issuer": "",
+          "not_before": null,
+          "not_after": null,
+          "serial_number": null,
+          "subject_alt_names": null
+        }
+      },
+      "tls_analysis": {
+        "protocol": "TLSv1.3",
+        "cipher": "TLS_AES_256_GCM_SHA384",
+        "cipher_bits": 256,
+        "findings": [],
+        "issues": [],
+        "overall_severity": "INFO",
+        "certificate_analysis": {
+          "error": "Could not retrieve certificate"
+        }
+      },
+      "sslyze": {
+        "output": "",
+        "note": "SSLyze not available"
+      }
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+# TLS Scanner Configuration
+
+# HTTP request timeout in seconds
+timeout: 10
+
+# Number of concurrent requests
+concurrency: 5
+
+# Default output format (json, csv, html, markdown)
+output_format: json
+
+# Directory for exporting reports
+export_dir: ./reports
+
+# Verify SSL certificates (set to false for testing)
+ssl_verify: false
+
+# HTTP User-Agent header
+user_agent: "Mozilla/5.0 (TLS-Scanner/1.0; +https://github.com/yourusername/tls-scanner)"
+
+# Web crawler configuration
+max_crawl_depth: 2
+max_crawl_urls: 50
+
+# Scan modules to enable (future feature)
+# modules:
+#   - http_headers
+#   - tls_validation
+#   - certificate_check
+#   - cipher_analysis
+
+# Security checks to enable (future feature)
+# security_checks:
+#   - hsts
+#   - certificate_expiry
+#   - cipher_strength
+#   - hostname_match
+#   - certificate_chain
