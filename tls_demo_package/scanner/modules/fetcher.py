@@ -12,6 +12,7 @@ import aiohttp
 from modules.rule_engine import classify_risk, score_findings, suggestions_from_findings, check_security_headers, check_cookie_attributes
 from modules.tls_engine import fetch_tls_details
 from modules.tls_validator import analyze_tls_security
+from modules.cert_chain import get_certificate_chain, analyze_chain_security, validate_certificate_chain_integrity
 
 
 def extract_hostport(url: str) -> str:
@@ -93,6 +94,16 @@ async def scan_targets(urls: List[str], log_content: Optional[bytes] = None) -> 
         entry["risk"] = classify_risk(entry["score"])
         entry["suggestions"] = suggestions_from_findings(entry["findings"])
         entry["tls"] = fetch_tls_details(entry["url"] or "")
+        
+        # Fetch certificate chain information
+        parsed_url = urlparse(entry["url"] or "")
+        host = parsed_url.hostname or ""
+        port = parsed_url.port or 443
+        if host:
+            chain_info = get_certificate_chain(host, port, timeout=10)
+            entry["cert_chain"] = chain_info
+            entry["chain_security"] = analyze_chain_security(chain_info)
+            entry["chain_integrity"] = validate_certificate_chain_integrity(chain_info)
         
         # Add advanced TLS validation
         if isinstance(entry["tls"], dict) and "error" not in entry["tls"]:

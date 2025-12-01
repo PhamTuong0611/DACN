@@ -471,6 +471,171 @@
       margin-bottom: 16px;
       opacity: 0.5;
     }
+    /* Certificate Chain Styles */
+    .cert-chain-container {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .cert-item {
+      border: 2px solid var(--gray-200);
+      border-radius: 8px;
+      overflow: hidden;
+      background: white;
+      transition: all 0.2s ease;
+    }
+    .cert-item:hover {
+      border-color: var(--primary);
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.1);
+    }
+    .cert-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 14px;
+      background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+      cursor: pointer;
+      user-select: none;
+      font-weight: 600;
+      color: var(--primary);
+    }
+    .cert-header.expired {
+      background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+      color: #991b1b;
+    }
+    .cert-header.warning {
+      background: linear-gradient(135deg, #fef3c7 0%, #fcd34d 100%);
+      color: #92400e;
+    }
+    .cert-index {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      background: var(--primary);
+      color: white;
+      border-radius: 50%;
+      font-size: 12px;
+      font-weight: 700;
+      margin-right: 10px;
+    }
+    .cert-header.expired .cert-index {
+      background: #991b1b;
+    }
+    .cert-header.warning .cert-index {
+      background: #d97706;
+    }
+    .cert-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      font-size: 12px;
+      transition: transform 0.2s ease;
+    }
+    .cert-item.open .cert-toggle {
+      transform: rotate(90deg);
+    }
+    .cert-body {
+      display: none;
+      padding: 14px;
+      border-top: 1px solid var(--gray-200);
+      background: white;
+      animation: slideDown 0.3s ease;
+    }
+    .cert-item.open .cert-body {
+      display: block;
+    }
+    .cert-detail-grid {
+      display: grid;
+      gap: 10px;
+      font-size: 13px;
+    }
+    .cert-detail-row {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 16px;
+      padding: 8px 10px;
+      background: var(--gray-50);
+      border-radius: 4px;
+    }
+    .cert-detail-label {
+      font-weight: 600;
+      color: var(--gray-700);
+    }
+    .cert-detail-value {
+      word-break: break-word;
+      color: var(--gray-900);
+      font-family: "Fira Code", monospace;
+      font-size: 12px;
+    }
+    .cert-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .cert-badge {
+      display: inline-block;
+      padding: 4px 8px;
+      background: var(--primary);
+      color: white;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .chain-security-banner {
+      padding: 12px 14px;
+      border-radius: 8px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+    }
+    .chain-security-banner.secure {
+      background: #dcfce7;
+      color: #15803d;
+      border-left: 4px solid #15803d;
+    }
+    .chain-security-banner.warning {
+      background: #fef3c7;
+      color: #92400e;
+      border-left: 4px solid #f59e0b;
+    }
+    .chain-security-banner.critical {
+      background: #fee2e2;
+      color: #991b1b;
+      border-left: 4px solid #dc2626;
+    }
+    .chain-security-banner.error {
+      background: var(--gray-100);
+      color: var(--gray-700);
+      border-left: 4px solid var(--gray-400);
+    }
+    .loading-spinner {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border: 2px solid rgba(37, 99, 235, 0.2);
+      border-top-color: var(--primary);
+      border-radius: 50%;
+      animation: spin 0.6s linear infinite;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    .auto-scan-indicator {
+      display: inline-block;
+      padding: 4px 8px;
+      background: var(--success);
+      color: white;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 600;
+      margin-left: 8px;
+    }
     /* Expandable Content */
     .expandable-section {
       border: 1px solid var(--gray-200);
@@ -601,8 +766,13 @@
           </label>
           <textarea id="targets" name="targets" placeholder="https://example.com:443&#10;https://github.com&#10;https://google.com">{{ targets_text }}</textarea>
           <p class="hint">💡 Nhập danh sách domain/URL để quét TLS và HTTP headers. Hỗ trợ IPv6, port tùy chỉnh.</p>
+          
+          <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+            <input type="checkbox" id="auto-scan" checked style="width: 18px; height: 18px; cursor: pointer; accent-color: var(--primary);">
+            <label for="auto-scan" style="margin: 0; cursor: pointer; font-weight: 400; font-size: 14px;">🚀 Tự động quét khi nhập URL</label>
+          </div>
 
-          <button type="submit">🔍 Quét cấu hình</button>
+          <button type="submit" id="scan-btn">🔍 Quét cấu hình</button>
         </form>
         
         {% if results %}
@@ -660,6 +830,171 @@
                 {% if item.error %}
                   <p class="empty">❌ {{ item.error }}</p>
                 {% else %}
+                  <div class="section">
+                    <h3>🔗 Chuỗi Chứng Chỉ</h3>
+                    <div class="section-divider"></div>
+                    {% if item.cert_chain.error %}
+                      <p class="empty">⚠️ Không thể lấy chuỗi chứng chỉ: {{ item.cert_chain.error }}</p>
+                    {% else %}
+                      
+                      {% if item.cert_chain.chain_length > 0 %}
+                        <div style="padding: 12px; background: #f0f9ff; border-radius: 8px; margin-bottom: 12px; font-size: 12px; color: #0c4a6e;">
+                          <strong>🔗 Chuỗi Chứng Chỉ:</strong>
+                          {% for cert in item.cert_chain.chain %}
+                            {% if cert.index == 0 %}
+                              🍃 Leaf (Server)
+                            {% elif loop.last %}
+                              {% if item.cert_chain.chain_length > 1 %} → {% endif %}🔐 Root CA
+                            {% else %}
+                              → 🔗 Intermediate
+                            {% endif %}
+                          {% endfor %}
+
+                        </div>
+                      {% endif %}
+                      
+                      <div class="cert-chain-container">
+                      {% for cert in item.cert_chain.chain %}
+                        {% set cert_type = "Leaf" %}
+                        {% if cert.is_self_signed %}
+                          {% set cert_type = "Root CA" %}
+                        {% elif cert.key_usage and "Certificate Sign" in cert.key_usage|string %}
+                          {% set cert_type = "Intermediate CA" %}
+                        {% endif %}
+                        
+                        <div class="cert-item {% if cert.days_remaining and cert.days_remaining < 0 %}open expired{% elif cert.days_remaining and cert.days_remaining < 30 %}open warning{% endif %}">
+                          <div class="cert-header {% if cert.days_remaining and cert.days_remaining < 0 %}expired{% elif cert.days_remaining and cert.days_remaining < 30 %}warning{% endif %}">
+                            <div style="display: flex; align-items: center; flex: 1; gap: 8px;">
+                              <span class="cert-index">{{ cert.index + 1 }}</span>
+                              <div style="display: flex; align-items: center; gap: 6px;">
+                                {% if cert_type == "Leaf" %}
+                                  <span style="display: inline-flex; align-items: center; justify-content: center; background: #dbeafe; color: #0c4a6e; padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: 600;">🍃 Server</span>
+                                {% elif cert_type == "Intermediate CA" %}
+                                  <span style="display: inline-flex; align-items: center; justify-content: center; background: #fef3c7; color: #92400e; padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: 600;">🔗 Intermediate</span>
+                                {% elif cert_type == "Root CA" %}
+                                  <span style="display: inline-flex; align-items: center; justify-content: center; background: #dcfce7; color: #15803d; padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: 600;">🔐 Root CA</span>
+                                {% endif %}
+                              </div>
+                              <div style="flex: 1;">
+                                <div style="font-size: 13px;">{{ cert.subject }}</div>
+                                <div style="font-size: 11px; opacity: 0.8; margin-top: 2px;">
+                                  Phát hành bởi: <strong>{{ cert.issuer }}</strong>
+                                  {% if cert.days_remaining %}
+                                    <br/>
+                                    {% if cert.days_remaining < 0 %}
+                                      🔴 Hết hạn {{ cert.days_remaining|abs }} ngày
+                                    {% elif cert.days_remaining < 30 %}
+                                      🟡 Còn {{ cert.days_remaining }} ngày
+                                    {% else %}
+                                      🟢 Còn hiệu lực {{ cert.days_remaining }} ngày
+                                    {% endif %}
+                                  {% endif %}
+                                </div>
+                              </div>
+                            </div>
+                            <span class="cert-toggle">▶</span>
+                          </div>
+                          <div class="cert-body">
+                            <div class="cert-detail-grid">
+                              <div class="cert-detail-row">
+                                <span class="cert-detail-label">Phát hành bởi</span>
+                                <span class="cert-detail-value">{{ cert.issuer }}</span>
+                              </div>
+                              <div class="cert-detail-row">
+                                <span class="cert-detail-label">Phiên bản</span>
+                                <span class="cert-detail-value">{{ cert.version }}</span>
+                              </div>
+                              <div class="cert-detail-row">
+                                <span class="cert-detail-label">Serial</span>
+                                <span class="cert-detail-value">{{ cert.serial_number }}</span>
+                              </div>
+                              <div class="cert-detail-row">
+                                <span class="cert-detail-label">Tử ngày</span>
+                                <span class="cert-detail-value">{{ cert.not_before }}</span>
+                              </div>
+                              <div class="cert-detail-row">
+                                <span class="cert-detail-label">Đến ngày</span>
+                                <span class="cert-detail-value">{{ cert.not_after }}</span>
+                              </div>
+                              <div class="cert-detail-row">
+                                <span class="cert-detail-label">Thuật toán ký</span>
+                                <span class="cert-detail-value">{{ cert.signature_algorithm }}</span>
+                              </div>
+                              <div class="cert-detail-row">
+                                <span class="cert-detail-label">Khóa công khai</span>
+                                <span class="cert-detail-value">{{ cert.public_key_type }} {{ cert.public_key_size }} bits</span>
+                              </div>
+                              {% if cert.subject_alt_names %}
+                              <div class="cert-detail-row">
+                                <span class="cert-detail-label">SANs</span>
+                                <span class="cert-detail-value">
+                                  <div class="cert-list">
+                                    {% for san in cert.subject_alt_names %}
+                                      <span class="cert-badge">{{ san }}</span>
+                                    {% endfor %}
+                                  </div>
+                                </span>
+                              </div>
+                              {% endif %}
+                              {% if cert.key_usage %}
+                              <div class="cert-detail-row">
+                                <span class="cert-detail-label">Key Usage</span>
+                                <span class="cert-detail-value">
+                                  <div class="cert-list">
+                                    {% for usage in cert.key_usage %}
+                                      <span class="cert-badge">{{ usage }}</span>
+                                    {% endfor %}
+                                  </div>
+                                </span>
+                              </div>
+                              {% endif %}
+                              {% if cert.extended_key_usage %}
+                              <div class="cert-detail-row">
+                                <span class="cert-detail-label">EKU</span>
+                                <span class="cert-detail-value">
+                                  <div class="cert-list">
+                                    {% for eku in cert.extended_key_usage %}
+                                      <span class="cert-badge">{{ eku }}</span>
+                                    {% endfor %}
+                                  </div>
+                                </span>
+                              </div>
+                              {% endif %}
+                              {% if cert.is_ca %}
+                              <div class="cert-detail-row">
+                                <span class="cert-detail-label">CA Info</span>
+                                <span class="cert-detail-value">
+                                  ✅ Certificate Authority
+                                  {% if cert.ca_path_length %}
+                                    | Path Length: {{ cert.ca_path_length }}
+                                  {% endif %}
+                                </span>
+                              </div>
+                              {% endif %}
+                              {% if cert.subject_key_identifier %}
+                              <div class="cert-detail-row">
+                                <span class="cert-detail-label">Subject KID</span>
+                                <span class="cert-detail-value" style="font-size: 11px; word-break: break-all;">{{ cert.subject_key_identifier }}</span>
+                              </div>
+                              {% endif %}
+                              {% if cert.authority_key_identifier %}
+                              <div class="cert-detail-row">
+                                <span class="cert-detail-label">Auth KID</span>
+                                <span class="cert-detail-value" style="font-size: 11px; word-break: break-all;">{{ cert.authority_key_identifier }}</span>
+                              </div>
+                              {% endif %}
+                              <div class="cert-detail-row">
+                                <span class="cert-detail-label">SHA256</span>
+                                <span class="cert-detail-value" style="font-size: 11px; word-break: break-all;">{{ cert.fingerprint_sha256 }}</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      {% endfor %}
+                      </div>
+                    {% endif %}
+                  </div>
+
                   <div class="section">
                     <h3>🔐 Thông tin TLS/SSL</h3>
                     <div class="section-divider"></div>
@@ -825,6 +1160,62 @@
       headerElement.classList.toggle('open');
       content.classList.toggle('show');
     }
+
+    // Certificate chain expansion toggle
+    function toggleCertItem(certElement) {
+      certElement.classList.toggle('open');
+    }
+
+    // Auto-scan functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const targetsTextarea = document.getElementById('targets');
+      const autoScanCheckbox = document.getElementById('auto-scan');
+      const scanBtn = document.getElementById('scan-btn');
+      let autoScanTimer = null;
+
+      if (targetsTextarea && autoScanCheckbox && scanBtn) {
+        targetsTextarea.addEventListener('input', function() {
+          if (autoScanCheckbox.checked) {
+            // Clear previous timer
+            if (autoScanTimer) clearTimeout(autoScanTimer);
+            
+            // Debounce: wait 2 seconds after user stops typing
+            autoScanTimer = setTimeout(function() {
+              const text = targetsTextarea.value.trim();
+              // Only auto-scan if there's content and it looks like valid URLs/domains
+              if (text && (text.includes('.') || text.includes(':'))) {
+                // Check if we have at least one valid-looking domain
+                const lines = text.split('\n').filter(l => l.trim());
+                const hasValidLine = lines.some(line => {
+                  const trimmed = line.trim();
+                  return trimmed.includes('.') || trimmed.includes('://') || trimmed.match(/^[a-z0-9-]+(:[0-9]+)?$/i);
+                });
+                
+                if (hasValidLine) {
+                  console.log('Auto-scanning...');
+                  // Submit the form
+                  const form = targetsTextarea.closest('form');
+                  if (form) {
+                    form.submit();
+                  }
+                }
+              }
+            }, 2000);
+          }
+        });
+
+        // Attach cert item click handlers
+        document.addEventListener('click', function(event) {
+          const certHeader = event.target.closest('.cert-header');
+          if (certHeader) {
+            const certItem = certHeader.closest('.cert-item');
+            if (certItem) {
+              toggleCertItem(certItem);
+            }
+          }
+        });
+      }
+    });
   </script>
 </body>
 </html>
