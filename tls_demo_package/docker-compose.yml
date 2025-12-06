@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  scanner:
+    build:
+      context: ./scanner
+      dockerfile: Dockerfile
+    container_name: tls_scanner
+    image: tls-scanner:latest
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./reports:/app/reports
+    environment:
+      - PYTHONUNBUFFERED=1
+    networks:
+      - demo_net
+    restart: unless-stopped
+
+networks:
+  demo_net:
+    driver: bridge
