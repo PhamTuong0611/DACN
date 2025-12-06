@@ -8,7 +8,7 @@ Gói demo này cung cấp một công cụ quét viết bằng Python để ki�
   - đọc danh sách domain/URL từ người dùng,
   - kết nối TLS để truy xuất thông tin chứng chỉ SSL/TLS,
   - phân tích thông tin bảo mật (protocol version, cipher strength, certificate validity),
-  - xuất kết quả dưới nhiều định dạng (JSON, CSV, HTML, Markdown),
+  - xuất kết quả dưới nhiều định dạng (JSON, CSV, Markdown),
   - cung cấp giao diện web tương tác cho việc quét và xuất báo cáo.
 
 ## Cấu Trúc Thư Mục
@@ -27,7 +27,7 @@ scanner/                    # Mã nguồn ứng dụng quét (Python)
   │  ├─ fetcher.py          # Quét async các target
   │  ├─ input_manager.py    # Xử lý input domain/URL
   │  ├─ reporter.py         # Tổng hợp và hiển thị kết quả
-  │  ├─ exporter.py         # Xuất báo cáo (JSON, CSV, HTML, Markdown)
+  │  ├─ exporter.py         # Xuất báo cáo (JSON, CSV, Markdown)
   │  ├─ config.py           # Tải cấu hình YAML
   │  └─ ...
   └─ partials/              # (Thư mục hỗ trợ)
@@ -75,7 +75,6 @@ Script sẽ build container scanner và chạy Docker Compose với log hiển t
 5. Nhấn **Xuất báo cáo** để tải kết quả dưới định dạng:
    - JSON (dữ liệu định hình)
    - CSV (bảng tính)
-   - HTML (báo cáo đẹp)
    - Markdown (tài liệu)
 
 ## Chạy Bằng CLI
@@ -95,13 +94,13 @@ docker compose exec scanner python scanner.py scan \
 # Quét và xuất báo cáo
 docker compose exec scanner python scanner.py scan \
   --target https://example.com \
-  --export json,csv,html,markdown \
+  --export json,csv,markdown \
   --output-dir ./reports
 ```
 
 **Tùy chọn CLI:**
 - `--target URL` (có thể lặp lại): URL hoặc domain cần quét
-- `--export FORMAT`: Định dạng xuất (json, csv, html, markdown) - có thể kết hợp bằng dấu phẩy
+- `--export FORMAT`: Định dạng xuất (json, csv, markdown) - có thể kết hợp bằng dấu phẩy
 - `--output-dir PATH`: Thư mục lưu báo cáo (mặc định: `./reports`)
 
 ## Ghi Chú & Sự Cố Thường Gặp
@@ -129,7 +128,7 @@ python scanner.py serve --host 127.0.0.1 --port 8080
   - `serve`: Chế độ web server với UI Jinja2
 - **modules/tls_engine.py**: Kết nối TLS bằng socket + ssl, truy xuất thông tin chứng chỉ
 - **modules/fetcher.py**: Xử lý async quét nhiều target đồng thời
-- **modules/exporter.py**: Xuất dữ liệu thành JSON, CSV, HTML, Markdown
+- **modules/exporter.py**: Xuất dữ liệu thành JSON, CSV, Markdown
 - **ui_template.html**: Giao diện web tương tác (form nhập + bảng kết quả)
 
 ## Chạy Tests
