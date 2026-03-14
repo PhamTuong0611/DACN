@@ -46,9 +46,8 @@ tests/                      # Test cases
 
 ## Khởi Chạy Nhanh
 
-```bash
-chmod +x run_demo.sh
-./run_demo.sh
+```Git bash
+bash run_demo.sh
 ```
 
 Script sẽ build container scanner và chạy Docker Compose với log hiển thị. Lần đầu chạy có thể mất vài phút để cài các thư viện Python.
