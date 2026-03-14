@@ -1,6 +1,7 @@
 # Demo Package – Hệ Thống Quét Kiểm Tra TLS/SSL
 
 Gói demo này cung cấp một công cụ quét viết bằng Python để kiểm tra cấu hình TLS/SSL và HTTP headers của các máy chủ web. Công cụ hoạt động cả ở chế độ CLI lẫn UI web tương tác.
+Video Demo: https://drive.google.com/file/d/1-DyLYvkEqR-o5q98zYnL8VqAZGJj5-qh/view?usp=drive_link
 
 ## Tổng Quan Hoạt Động
 
