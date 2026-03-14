@@ -46,6 +46,7 @@ tests/                      # Test cases
 
 ## Khởi Chạy Nhanh
 
+Dùng Git Bash:
 ```Git bash
 bash run_demo.sh
 ```
